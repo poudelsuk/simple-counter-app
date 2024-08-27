@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-
+import MyButton from "./my-button";
 
 export default function Home() {
   const [count,setCount]=useState(0);
@@ -9,6 +9,10 @@ export default function Home() {
   }
   const decreaseCounter=()=>{
     setCount(count-1);
+  }
+  const handleInput=(e)=>{
+    const value=e.target.value;
+    setCount(Number(value));
   }
 
   return (
@@ -23,6 +27,11 @@ export default function Home() {
      <h1 className="heading">Hello {count}</h1>
      <button onClick={increaseCounter}>inc count</button>
      <button onClick={decreaseCounter}>dec count</button>
+     <MyButton text="increase" onClick={increaseCounter}/>
+     <input
+     onInput={handleInput}
+     />
+
       </main>
     </>
   );
