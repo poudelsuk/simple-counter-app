@@ -2,30 +2,39 @@ import Head from "next/head";
 import { useState } from "react";
 import MyButton from "./my-button";
 const max_counter=10;
-const min_counter=10;
+const min_counter=-10;
+
 
 export default function Home() {
   const [count,setCount]=useState(0);
   const[tempCount,setTempCount]=useState(null);
+  const[history,sethistory]=useState([]);
   const increaseCounter=()=>{
     if(count>=max_counter){
       alert("maximum limit");
       return;
     }
+    sethistory([...history,count]);
     setCount(count+1);
+    console.log(history);
   }
   const decreaseCounter=()=>{
     if(count<=min_counter){
       alert("minimum limit");
+      return;
     }
+    history.push(count);
     setCount(count-1);
+    console.log(history)
   }
   const handleInput=(e)=>{
     const value=e.target.value;
     setTempCount(Number(value));
   }
   const handlereset=()=>{
+    history.push(count);
     setCount(tempCount);
+    console.log(history);
   }
 
 
@@ -49,6 +58,9 @@ export default function Home() {
      text="reset to custom value"
      onClick={handlereset}
      />
+     <div>
+      {history}
+     </div>
    
 
       </main>
