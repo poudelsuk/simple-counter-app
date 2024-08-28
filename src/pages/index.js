@@ -36,6 +36,17 @@ export default function Home() {
     setCount(tempCount);
     console.log(history);
   }
+  const handleundo=()=>{
+    if (history.length==0) 
+      return;
+    const lastelementindex=history.length-1;
+    const lastElement=history.slice(lastelementindex)
+    setCount(lastElement[0]);
+    const newhistory=history.slice(0,lastElement);
+    sethistory(newhistory); 
+    console.log(newhistory);
+  }
+  
 
 
   return (
@@ -58,9 +69,15 @@ export default function Home() {
      text="reset to custom value"
      onClick={handlereset}
      />
+     <MyButton
+     text="undo"
+     onClick={handleundo}
+     />
+
      <div>
       {history}
      </div>
+
    
 
       </main>
