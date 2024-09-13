@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { BackgroundChanger } from "../backgrounndchanger";
+import { Dropdown } from "./Dropdown";
 
 export function TodoList(){
     const [tasks,setTasks]=useState(["do homework","eat rice"]);
@@ -24,11 +26,14 @@ export function TodoList(){
         return( <li>{task}</li>);
        
       //return <HistoryItem count={c}/>
-       
+     
       
        } )}
       </ul>
+      <BackgroundChanger/>
+      <Dropdown/>
         </div>
+        
         
     );
 }
