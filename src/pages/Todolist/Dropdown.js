@@ -25,25 +25,40 @@ export const Dropdown=() => {
             <option value="green">green</option>
         </select>
         <div>
-            <label>
-                blue
-                <input
-                type="radio"
-                value="blue"
-                checked={backgroundC==="blue"}
-                onChange={handleselectcolor}
-                />
-            </label>
-            <label>
-                green
-                <input
-                type="radio"
-                value="green"
-                checked={backgroundC==="green"}
-                onChange={handleselectcolor}
-                />
-            </label>
+            <div style={{display:"flex",flexDirection:"column"}}>
+        {colors.map((color)=>{
+                        return (
+                            <label>
+                         
+                            <input
+                            type="radio"
+                            value={color}
+                            checked={backgroundC===color}
+                            onChange={handleselectcolor}
+                            />
+                               {color}
+                        </label>
+                            
+                            
+                        )
+                    })}
+                    </div>
+
+            
+            
+           
+
         </div>
+        <p>Choose your monster's colors:</p>
+
+<div>
+  <input type="color"  value={backgroundC} onChange={handleselectcolor} />
+  <label for="head">Head</label>
+</div>
+
+
+
+
     </div>
    
   );
